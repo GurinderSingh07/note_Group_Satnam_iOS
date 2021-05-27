@@ -26,6 +26,12 @@ class NotesController: UIViewController {
         setupInitials()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.toolbar.isHidden = false
+    }
+    
     //MARK:- PrivateMethods
     func setupInitials(){
         
@@ -62,7 +68,9 @@ class NotesController: UIViewController {
     
     @IBAction func createNoteFunction(_ sender: Any) {
         
+        let destination = self.storyboard?.instantiateViewController(identifier: "create_note_view") as! CreateNoteController
         
+        self.navigationController?.pushViewController(destination, animated: true)
     }
     
     @IBAction func deleteFunction(_ sender: Any) {
