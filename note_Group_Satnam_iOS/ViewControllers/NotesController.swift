@@ -93,4 +93,11 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let destinationView = self.storyboard?.instantiateViewController(identifier: "edit_note_view") as! EditNoteController
+        
+        self.navigationController?.pushViewController(destinationView, animated: true)
+    }
 }
