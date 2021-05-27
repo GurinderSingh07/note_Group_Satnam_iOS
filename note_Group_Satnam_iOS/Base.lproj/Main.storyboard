@@ -103,6 +103,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iuH-08-pSJ"/>
                         <barButtonItem image="plus.circle.fill" catalog="system" largeContentSizeImage="plus.circle.fill" id="uTs-Wn-eQq">
                             <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="tapCreateCategory:" destination="BYZ-38-t0r" id="l44-8I-40B"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="8FN-Ot-w2X"/>

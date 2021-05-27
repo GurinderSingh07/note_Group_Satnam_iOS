@@ -41,11 +41,20 @@ class WelcomeController: UIViewController {
     func showSearchBar() {
         
         searchController.searchBar.searchTextField.backgroundColor = UIColor.white
+        searchController.searchBar.searchTextField.textColor = UIColor.black
+        
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Category"
+        
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        searchController.searchBar.searchTextField.textColor = .systemBlue
+        searchController.searchBar.searchTextField.textColor = UIColor.black
+    }
+    
+    //MARK:- UIButton
+    @IBAction func tapCreateCategory(_ sender: UIBarButtonItem) {
+        
+        
     }
 }
 
