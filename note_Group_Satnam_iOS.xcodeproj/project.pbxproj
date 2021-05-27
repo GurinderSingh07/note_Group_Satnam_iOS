@@ -14,6 +14,7 @@
 		9B64BC0F265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B64BC0D265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld */; };
 		9B64BC11265E99E10075D39A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B64BC10265E99E10075D39A /* Assets.xcassets */; };
 		9B64BC14265E99E10075D39A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64BC12265E99E10075D39A /* LaunchScreen.storyboard */; };
+		9B98A9D9265FBFD100721F32 /* apple-notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B98A9D8265FBFD100721F32 /* apple-notes.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9B64BC10265E99E10075D39A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B64BC13265E99E10075D39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B64BC15265E99E10075D39A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B98A9D8265FBFD100721F32 /* apple-notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-notes.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		9B64BC03265E99D80075D39A /* note_Group_Satnam_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9B98A9D8265FBFD100721F32 /* apple-notes.png */,
 				9B64BC04265E99D80075D39A /* AppDelegate.swift */,
 				9B64BC06265E99D80075D39A /* SceneDelegate.swift */,
 				9B64BC08265E99D80075D39A /* ViewController.swift */,
@@ -130,6 +133,7 @@
 			files = (
 				9B64BC14265E99E10075D39A /* LaunchScreen.storyboard in Resources */,
 				9B64BC11265E99E10075D39A /* Assets.xcassets in Resources */,
+				9B98A9D9265FBFD100721F32 /* apple-notes.png in Resources */,
 				9B64BC0C265E99D80075D39A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

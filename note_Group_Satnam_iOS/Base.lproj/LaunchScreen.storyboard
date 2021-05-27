@@ -19,23 +19,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.16433212159999999" green="0.73401623959999995" blue="0.98916119339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-notes.png" translatesAutoresizingMaskIntoConstraints="NO" id="vm6-X0-zQF">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="BOp-sG-1Dt"/>
+                                    <constraint firstAttribute="width" constant="150" id="afh-sv-7HF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-0Y-Aaj">
+                                <rect key="frame" x="133" y="533" width="148" height="35"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="5eK-0Y-Aaj" firstAttribute="top" secondItem="vm6-X0-zQF" secondAttribute="bottom" constant="10" id="Ndw-7l-DTx"/>
+                            <constraint firstItem="5eK-0Y-Aaj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NhI-dh-0Yh"/>
                             <constraint firstAttribute="bottom" secondItem="lyw-Y3-1WJ" secondAttribute="bottom" id="RZs-Wc-hen"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lyw-Y3-1WJ" secondAttribute="trailing" id="WmW-9s-9Hj"/>
+                            <constraint firstItem="vm6-X0-zQF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cvM-Wh-NiZ"/>
                             <constraint firstItem="lyw-Y3-1WJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="pkg-qO-IL8"/>
                             <constraint firstItem="lyw-Y3-1WJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uLF-TI-CDD"/>
+                            <constraint firstItem="vm6-X0-zQF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yhK-A4-BR1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
         <image name="BGImage" width="1000" height="2059"/>
+        <image name="apple-notes.png" width="216.86747741699219" height="216.86747741699219"/>
     </resources>
 </document>
