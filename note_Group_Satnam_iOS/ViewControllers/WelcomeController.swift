@@ -80,6 +80,17 @@ class WelcomeController: UIViewController {
         }
     }
     
+    private func createFolder(name:String){
+        let newFolder = Folder(context: context)
+        folders.append(newFolder)
+        newFolder.name = name
+        do {
+            try context.save()
+        } catch  {
+            print(error)
+        }
+    }
+    
     //MARK:- UIButton
     @IBAction func createCategoryFunction(_ sender: UIBarButtonItem) {
         
@@ -88,7 +99,17 @@ class WelcomeController: UIViewController {
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: {
             _ in
             
-            
+            //following is to get name of categories in lower case
+            let categoryNames = self.folders.map{$0.name?.lowercased()}
+            guard let text = alert.textFields?.first?.text else{return}
+            print(text)
+            guard !categoryNames.contains(text) else {
+                let alertMessage = UIAlertController(title: "Folder already exist", message: "", preferredStyle: .alert)
+                alertMessage.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+                return
+            }
+            self.createFolder(name: text)
             self.loadFolders()
             self.tbCategories.reloadData()
         }))
