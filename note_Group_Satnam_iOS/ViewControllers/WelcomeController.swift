@@ -20,23 +20,19 @@ class WelcomeController: UIViewController {
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         setupInitials()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupView()
     }
     
     //MARK:- PrivateMethods
     func setupInitials(){
-        
-        // Set navigation bar title
-        self.title = "Categories"
-        
-        // Set up navigation bar attributes properties.
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.black,
-             NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 40) ??
-                UIFont.systemFont(ofSize: 40)]
         
         showSearchBar()
     }
@@ -51,6 +47,19 @@ class WelcomeController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    func setupView(){
+        
+        // Set navigation bar title
+        self.title = "Categories"
+        
+        // Set up navigation bar attributes properties.
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.black,
+             NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 40) ??
+                UIFont.systemFont(ofSize: 40)]
     }
     
     //MARK:- UIButton
@@ -85,7 +94,7 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
            if editingStyle == .delete {
-               let alert = UIAlertController(title: "Are you sure?", message: "Delete note", preferredStyle: .actionSheet)
+               let alert = UIAlertController(title: "", message: "Are you sure you want to delete note?", preferredStyle: .actionSheet)
                let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
                   
                })
@@ -95,4 +104,9 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
                self.present(alert, animated: true, completion: nil)
            }
        }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.title = ""
+    }
 }

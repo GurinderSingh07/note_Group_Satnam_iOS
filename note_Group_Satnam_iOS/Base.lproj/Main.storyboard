@@ -77,6 +77,7 @@
                                             <outlet property="lblSubtitle" destination="q95-TM-5hk" id="beq-ZK-ebf"/>
                                             <outlet property="lblTitle" destination="5gI-Lz-p7G" id="KlL-cv-Rcd"/>
                                             <outlet property="viewContainer" destination="an9-3b-LOF" id="YZA-T8-Xo6"/>
+                                            <segue destination="L9q-vP-BnG" kind="show" id="s8w-Ka-NMd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,6 +119,104 @@
             </objects>
             <point key="canvasLocation" x="557.97101449275362" y="-236.38392857142856"/>
         </scene>
+        <!--Notes Controller-->
+        <scene sceneID="vPd-gN-Eg7">
+            <objects>
+                <viewController id="L9q-vP-BnG" customClass="NotesController" customModule="My_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q20-dA-BNj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BGImage" translatesAutoresizingMaskIntoConstraints="NO" id="ISH-Hg-XTX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-el-cF7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TableViewCell" id="IYB-jx-7Vj" customClass="TableViewCell" customModule="My_Notes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IYB-jx-7Vj" id="fNb-gQ-5uL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D5p-AQ-JA4">
+                                                    <rect key="frame" x="10" y="10" width="394" height="80"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note-pencil" translatesAutoresizingMaskIntoConstraints="NO" id="Xke-de-WN1">
+                                                            <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="50" id="Wif-AA-fdn"/>
+                                                                <constraint firstAttribute="width" constant="50" id="z2r-ZN-fRc"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnE-e8-QAX">
+                                                            <rect key="frame" x="85" y="15" width="42" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5q-6K-Drd">
+                                                            <rect key="frame" x="85" y="48.5" width="37" height="18.5"/>
+                                                            <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="fnE-e8-QAX" firstAttribute="leading" secondItem="Xke-de-WN1" secondAttribute="trailing" constant="20" id="0fY-47-wz5"/>
+                                                        <constraint firstItem="g5q-6K-Drd" firstAttribute="top" secondItem="fnE-e8-QAX" secondAttribute="bottom" constant="10" id="4WZ-4R-A8A"/>
+                                                        <constraint firstItem="g5q-6K-Drd" firstAttribute="leading" secondItem="fnE-e8-QAX" secondAttribute="leading" id="M8K-hC-JFo"/>
+                                                        <constraint firstItem="fnE-e8-QAX" firstAttribute="top" secondItem="Xke-de-WN1" secondAttribute="top" id="MYt-vO-92f"/>
+                                                        <constraint firstItem="Xke-de-WN1" firstAttribute="leading" secondItem="D5p-AQ-JA4" secondAttribute="leading" constant="15" id="xyR-ot-hta"/>
+                                                        <constraint firstItem="Xke-de-WN1" firstAttribute="centerY" secondItem="D5p-AQ-JA4" secondAttribute="centerY" id="y5C-31-XAi"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="D5p-AQ-JA4" secondAttribute="trailing" constant="10" id="7kX-kF-cmQ"/>
+                                                <constraint firstItem="D5p-AQ-JA4" firstAttribute="top" secondItem="fNb-gQ-5uL" secondAttribute="top" constant="10" id="EuE-tf-JB7"/>
+                                                <constraint firstAttribute="bottom" secondItem="D5p-AQ-JA4" secondAttribute="bottom" constant="10" id="c2C-O6-xNS"/>
+                                                <constraint firstItem="D5p-AQ-JA4" firstAttribute="leading" secondItem="fNb-gQ-5uL" secondAttribute="leading" constant="10" id="xSe-De-I4W"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="lblSubtitle" destination="g5q-6K-Drd" id="oyg-U6-baJ"/>
+                                            <outlet property="lblTitle" destination="fnE-e8-QAX" id="peg-w2-lTR"/>
+                                            <outlet property="viewContainer" destination="D5p-AQ-JA4" id="eQA-2U-Yje"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="L9q-vP-BnG" id="9oa-2R-rGr"/>
+                                    <outlet property="delegate" destination="L9q-vP-BnG" id="RRI-gr-pdh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ISH-Hg-XTX" secondAttribute="bottom" id="BGp-54-8Fz"/>
+                            <constraint firstItem="DPS-en-TCt" firstAttribute="bottom" secondItem="vJB-el-cF7" secondAttribute="bottom" id="VCu-QS-i2R"/>
+                            <constraint firstItem="ISH-Hg-XTX" firstAttribute="leading" secondItem="DPS-en-TCt" secondAttribute="leading" id="Vk9-MS-E8f"/>
+                            <constraint firstItem="vJB-el-cF7" firstAttribute="leading" secondItem="DPS-en-TCt" secondAttribute="leading" id="Xds-fU-wFm"/>
+                            <constraint firstItem="vJB-el-cF7" firstAttribute="top" secondItem="DPS-en-TCt" secondAttribute="top" id="gOq-BI-iwV"/>
+                            <constraint firstItem="ISH-Hg-XTX" firstAttribute="trailing" secondItem="DPS-en-TCt" secondAttribute="trailing" id="jRf-ca-bkg"/>
+                            <constraint firstItem="ISH-Hg-XTX" firstAttribute="top" secondItem="Q20-dA-BNj" secondAttribute="top" id="pGR-lj-ehZ"/>
+                            <constraint firstItem="vJB-el-cF7" firstAttribute="trailing" secondItem="DPS-en-TCt" secondAttribute="trailing" id="yU6-XD-JRZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DPS-en-TCt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4KY-QX-mEG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gck-aC-KfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1504.3478260869567" y="-239.0625"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="EVB-yV-zIE">
             <objects>
@@ -144,6 +243,7 @@
     <resources>
         <image name="BGImage" width="1000" height="2059"/>
         <image name="logo.png" width="216" height="216"/>
+        <image name="note-pencil" width="288" height="288"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
