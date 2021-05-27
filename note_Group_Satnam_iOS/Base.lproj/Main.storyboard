@@ -497,6 +497,9 @@
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="play.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="playAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="Bbk-Bq-RUF"/>
+                                        </connections>
                                     </button>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="00y-ye-8Bf">
                                         <rect key="frame" x="53" y="15" width="258" height="31"/>
@@ -510,6 +513,9 @@
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="clear.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="deleteAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="4AG-Bs-w0Z"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -536,6 +542,9 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-Qp-1I4">
                                         <rect key="frame" x="153.5" y="9.5" width="51" height="31"/>
                                         <color key="onTintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="addLocationButton:" destination="1O5-fu-OmW" eventType="valueChanged" id="yRG-NC-5x0"/>
+                                        </connections>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ToH-gK-t3b">
                                         <rect key="frame" x="369" y="9.5" width="30" height="30"/>
@@ -554,6 +563,10 @@
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="camera.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="addAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="kxc-Uh-yXe"/>
+                                            <action selector="addPhotoFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="VhM-6w-fis"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95106047390000004" green="0.86946672199999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -591,9 +604,13 @@
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="crossButtonAudio" destination="PJ0-yx-LUK" id="wNt-Yi-clP"/>
                         <outlet property="detailField" destination="imb-Sd-ziv" id="Lcx-wU-JqO"/>
                         <outlet property="imageView" destination="HTb-pb-vNm" id="14O-hi-hOS"/>
                         <outlet property="mapView" destination="Nm9-Kx-4dT" id="l9f-8p-Sip"/>
+                        <outlet property="playButtonAudio" destination="Jgd-4n-wsn" id="kf8-YG-cah"/>
+                        <outlet property="sliderAudio" destination="00y-ye-8Bf" id="bbb-LQ-09i"/>
+                        <outlet property="titleField" destination="nU4-WQ-h9N" id="CtE-aN-EQM"/>
                         <outlet property="viewDescription" destination="VfY-YZ-QYm" id="WBk-04-pSl"/>
                         <outlet property="viewSlideBar" destination="dLG-rw-GR3" id="cgp-0c-HSH"/>
                         <outlet property="viewTitle" destination="t5a-2o-wcE" id="lCH-Zd-XU4"/>
