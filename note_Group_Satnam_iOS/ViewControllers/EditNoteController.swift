@@ -36,7 +36,6 @@ class EditNoteController: UIViewController {
     }
     
     //MARK:- PrivateMethods
-    
     func setupInitials(){
         
         // Set navigation tool bar hidden
@@ -61,8 +60,16 @@ class EditNoteController: UIViewController {
         detailField.layer.cornerRadius = 10
         detailField.layer.borderWidth = 1
         detailField.layer.borderColor = UIColor.black.cgColor
+        
+        // Set navigation bar right bar button item
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveData))
     }
     
+    @objc func saveData(){
+        
+    }
+    
+    //MARK:- UIButtons
     @IBAction func stopButton(_ sender: UIButton) {
         
     }
