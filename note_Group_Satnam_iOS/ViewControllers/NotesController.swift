@@ -55,7 +55,9 @@ class NotesController: UIViewController {
     
     @IBAction func moveFunction(_ sender: Any) {
         
+        let destinationView = self.storyboard?.instantiateViewController(identifier: "move_note_view") as! MoveNotesController
         
+       self.present(destinationView, animated: true, completion: nil)
     }
     
     @IBAction func createNoteFunction(_ sender: Any) {
