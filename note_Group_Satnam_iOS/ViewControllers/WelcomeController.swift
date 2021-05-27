@@ -16,6 +16,8 @@ class WelcomeController: UIViewController {
     //MARK:- MemberVariables
     let searchController = UISearchController(searchResultsController: nil)
     
+    private var folders = [Folder]()
+    
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         
@@ -26,6 +28,7 @@ class WelcomeController: UIViewController {
     //MARK:- PrivateMethods
     func setupInitials(){
         
+        // Set navigation bar title
         self.title = "Categories"
         
         // Set up navigation bar attributes properties.
@@ -40,21 +43,27 @@ class WelcomeController: UIViewController {
     
     func showSearchBar() {
         
+        // Set search bar textfield attributes.
+        searchController.searchBar.placeholder = "Search Category"
         searchController.searchBar.searchTextField.backgroundColor = UIColor.white
         searchController.searchBar.searchTextField.textColor = UIColor.black
         
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Category"
-        
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        searchController.searchBar.searchTextField.textColor = UIColor.black
     }
     
     //MARK:- UIButton
     @IBAction func tapCreateCategory(_ sender: UIBarButtonItem) {
         
-        
+        let alert = UIAlertController(title: "Create Category", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {field in field.placeholder = "Category Name"})
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: {
+            _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -73,4 +82,17 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               let alert = UIAlertController(title: "Are you sure?", message: "Delete note", preferredStyle: .actionSheet)
+               let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                  
+               })
+               let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+               alert.addAction(deleteButton)
+               alert.addAction(cancelButton)
+               self.present(alert, animated: true, completion: nil)
+           }
+       }
 }
