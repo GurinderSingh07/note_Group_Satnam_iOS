@@ -10,6 +10,15 @@ import UIKit
 
 class NotesController: UIViewController {
 
+     //MARK:- IBOutlets
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBOutlet weak var optionButton: UIBarButtonItem!
+    @IBOutlet weak var moveButton: UIBarButtonItem!
+    @IBOutlet weak var plusButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
+    
+    //MARK:- ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +42,29 @@ class NotesController: UIViewController {
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 20) ??
                 UIFont.systemFont(ofSize: 20)]
+    }
+    
+    //MARK:- UIButtons
+    @IBAction func editFunction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func optionButtonFunction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func moveFunction(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func createNoteFunction(_ sender: Any) {
+        
+        
+    }
+    
+    @IBAction func deleteFunction(_ sender: Any) {
+        
     }
 }
 
