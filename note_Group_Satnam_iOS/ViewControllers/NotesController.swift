@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesController: UIViewController {
 
@@ -18,7 +19,12 @@ class NotesController: UIViewController {
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     //MARK:- MemberVariables
+    var editMode = false
+    
     let searchController = UISearchController(searchResultsController: nil)
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    private var notes : [Note] = [Note]()
     var parentFolder : Folder?
     
     
@@ -40,6 +46,8 @@ class NotesController: UIViewController {
     func setupInitials(){
         
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        self.navigationItem.title = parentFolder?.name
         showSearchBar()
     }
     
@@ -65,6 +73,27 @@ class NotesController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    func loadNotes(predicate : NSPredicate? = nil,search: [NSSortDescriptor]?=nil)  {
+        
+        let request : NSFetchRequest<Note> = Note.fetchRequest()
+        if search != nil{
+            request.sortDescriptors = search
+        }else{
+            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        }
+        let folderPredicate = NSPredicate(format: "parentFolder.name=%@", parentFolder!.name!)
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [folderPredicate, additionalPredicate])
+        } else {
+            request.predicate = folderPredicate
+        }
+        do {
+            self.notes = try self.context.fetch(request)
+        } catch  {
+            print(error)
+        }
     }
     
     //MARK:- UIButtons
@@ -99,14 +128,18 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return notes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
+        // Set View Container corner radius
         cell.viewContainer.layer.cornerRadius = 5
+        
+        cell.lblTitle.text = "\(notes[indexPath.row].title ?? "")"
+        cell.lblSubtitle.text = "Date:- \(Date.getDateWithFormat(date: notes[indexPath.row].date ?? Date()))"
         
         return cell
     }
@@ -116,5 +149,17 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
         let destinationView = self.storyboard?.instantiateViewController(identifier: "edit_note_view") as! EditNoteController
         
         self.navigationController?.pushViewController(destinationView, animated: true)
+    }
+}
+
+extension Date {
+
+     static func getDateWithFormat(date : Date) -> String {
+
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "dd/MM/yyyy, hh:mm a"
+
+        return dateFormatter.string(from: date)
     }
 }
