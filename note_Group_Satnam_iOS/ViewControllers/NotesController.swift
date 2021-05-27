@@ -49,6 +49,7 @@ class NotesController: UIViewController {
         
         self.navigationItem.title = parentFolder?.name
         showSearchBar()
+        loadNotes()
     }
     
     func setupView(){
@@ -103,6 +104,25 @@ class NotesController: UIViewController {
     
     @IBAction func optionButtonFunction(_ sender: Any) {
         
+        let alert = UIAlertController(title: "Do you want to sort notes?", message: "If yes, then Select any option to sort it.", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "(A-Z) Ascending", style: .default, handler: {
+            _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "(A-Z) Descending", style: .default, handler: {
+            _ in
+           
+        }))
+        alert.addAction(UIAlertAction(title: "Date Ascending", style: .default, handler: {
+            _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Date Descending", style: .default, handler: {
+            _ in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func moveFunction(_ sender: Any) {
