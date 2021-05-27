@@ -423,7 +423,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="Ueb-dJ-APA" firstAttribute="leading" secondItem="VfY-YZ-QYm" secondAttribute="leading" constant="10" id="3KD-dW-yqi"/>
                                                     <constraint firstAttribute="trailing" secondItem="imb-Sd-ziv" secondAttribute="trailing" constant="10" id="AQS-Jb-1b8"/>
@@ -434,15 +434,21 @@
                                                     <constraint firstItem="imb-Sd-ziv" firstAttribute="top" secondItem="Ueb-dJ-APA" secondAttribute="bottom" constant="5" id="yzx-CG-d3c"/>
                                                 </constraints>
                                             </view>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Nm9-Kx-4dT">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nm9-Kx-4dT">
                                                 <rect key="frame" x="20" y="400" width="374" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="Nel-ra-AaF"/>
                                                 </constraints>
                                             </mapView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap camera to select Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQO-3B-P14">
+                                                <rect key="frame" x="77" y="705.5" width="260.5" height="29"/>
+                                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTb-pb-vNm">
                                                 <rect key="frame" x="20" y="620" width="374" height="200"/>
-                                                <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="HNH-hx-l90"/>
                                                 </constraints>
@@ -450,18 +456,24 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="xQO-3B-P14" firstAttribute="centerX" secondItem="HTb-pb-vNm" secondAttribute="centerX" id="0pb-fn-0TA"/>
                                             <constraint firstItem="Nm9-Kx-4dT" firstAttribute="trailing" secondItem="HTb-pb-vNm" secondAttribute="trailing" id="2nG-2d-NbP"/>
                                             <constraint firstItem="HTb-pb-vNm" firstAttribute="top" secondItem="Nm9-Kx-4dT" secondAttribute="bottom" constant="20" id="4xP-Uq-qbz"/>
                                             <constraint firstItem="t5a-2o-wcE" firstAttribute="top" secondItem="KTj-8Q-MHr" secondAttribute="top" constant="20" id="ElC-hG-THy"/>
                                             <constraint firstItem="Nm9-Kx-4dT" firstAttribute="leading" secondItem="HTb-pb-vNm" secondAttribute="leading" id="O9U-FV-UES"/>
                                             <constraint firstItem="HTb-pb-vNm" firstAttribute="leading" secondItem="VfY-YZ-QYm" secondAttribute="leading" id="Qet-70-Nf5"/>
                                             <constraint firstItem="Nm9-Kx-4dT" firstAttribute="top" secondItem="VfY-YZ-QYm" secondAttribute="bottom" constant="20" id="Rq7-Th-6li"/>
+                                            <constraint firstItem="Ueb-dJ-APA" firstAttribute="top" secondItem="KTj-8Q-MHr" secondAttribute="top" constant="110" id="TVC-9f-yZJ"/>
+                                            <constraint firstItem="imb-Sd-ziv" firstAttribute="top" secondItem="Ueb-dJ-APA" secondAttribute="bottom" constant="5" id="VQW-jr-01W"/>
                                             <constraint firstAttribute="bottom" secondItem="HTb-pb-vNm" secondAttribute="bottom" constant="10" id="VrN-ez-kJC"/>
                                             <constraint firstItem="VfY-YZ-QYm" firstAttribute="top" secondItem="t5a-2o-wcE" secondAttribute="bottom" constant="20" id="ZLR-tm-BDq"/>
                                             <constraint firstItem="VfY-YZ-QYm" firstAttribute="leading" secondItem="t5a-2o-wcE" secondAttribute="leading" id="cDP-ay-GLq"/>
+                                            <constraint firstItem="imb-Sd-ziv" firstAttribute="leading" secondItem="Ueb-dJ-APA" secondAttribute="leading" id="csH-Ul-DrO"/>
                                             <constraint firstItem="HTb-pb-vNm" firstAttribute="trailing" secondItem="VfY-YZ-QYm" secondAttribute="trailing" id="g63-6D-gcG"/>
                                             <constraint firstItem="t5a-2o-wcE" firstAttribute="leading" secondItem="KTj-8Q-MHr" secondAttribute="leading" constant="20" id="gMB-Ui-b7F"/>
                                             <constraint firstAttribute="trailing" secondItem="t5a-2o-wcE" secondAttribute="trailing" constant="20" id="ivq-Ze-5OD"/>
+                                            <constraint firstItem="Ueb-dJ-APA" firstAttribute="leading" secondItem="KTj-8Q-MHr" secondAttribute="leading" constant="30" id="s2i-Xe-REv"/>
+                                            <constraint firstItem="xQO-3B-P14" firstAttribute="centerY" secondItem="HTb-pb-vNm" secondAttribute="centerY" id="yPd-pA-a23"/>
                                             <constraint firstItem="VfY-YZ-QYm" firstAttribute="trailing" secondItem="t5a-2o-wcE" secondAttribute="trailing" id="yvd-mz-FSA"/>
                                         </constraints>
                                     </view>
@@ -544,7 +556,7 @@
                                         <state key="normal" backgroundImage="camera.fill" catalog="system"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.95106047390000004" green="0.86946672199999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="jg0-GS-Hco" firstAttribute="centerY" secondItem="ToH-gK-t3b" secondAttribute="centerY" id="2MC-aH-zpI"/>
                                     <constraint firstItem="NyX-Qp-1I4" firstAttribute="centerY" secondItem="LiG-IE-63c" secondAttribute="centerY" id="4U1-SP-Z3p"/>
@@ -578,6 +590,14 @@
                         <viewLayoutGuide key="safeArea" id="I1T-Hb-7Ez"/>
                     </view>
                     <size key="freeformSize" width="414" height="1000"/>
+                    <connections>
+                        <outlet property="detailField" destination="imb-Sd-ziv" id="Lcx-wU-JqO"/>
+                        <outlet property="imageView" destination="HTb-pb-vNm" id="14O-hi-hOS"/>
+                        <outlet property="mapView" destination="Nm9-Kx-4dT" id="l9f-8p-Sip"/>
+                        <outlet property="viewDescription" destination="VfY-YZ-QYm" id="WBk-04-pSl"/>
+                        <outlet property="viewSlideBar" destination="dLG-rw-GR3" id="cgp-0c-HSH"/>
+                        <outlet property="viewTitle" destination="t5a-2o-wcE" id="lCH-Zd-XU4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbp-6C-DtN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
