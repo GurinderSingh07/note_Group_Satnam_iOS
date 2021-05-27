@@ -18,7 +18,9 @@ class NotesController: UIViewController {
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     //MARK:- MemberVariables
+    let searchController = UISearchController(searchResultsController: nil)
     var parentFolder : Folder?
+    
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -38,6 +40,7 @@ class NotesController: UIViewController {
     func setupInitials(){
         
         navigationController?.navigationBar.prefersLargeTitles = false
+        showSearchBar()
     }
     
     func setupView(){
@@ -50,6 +53,18 @@ class NotesController: UIViewController {
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 20) ??
                 UIFont.systemFont(ofSize: 20)]
+    }
+    
+    func showSearchBar() {
+        
+        // Set search bar textfield attributes.
+        searchController.searchBar.placeholder = "Search Note"
+        searchController.searchBar.searchTextField.backgroundColor = UIColor.white
+        searchController.searchBar.searchTextField.textColor = UIColor.black
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     //MARK:- UIButtons
