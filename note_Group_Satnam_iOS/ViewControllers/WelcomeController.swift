@@ -91,6 +91,15 @@ class WelcomeController: UIViewController {
         }
     }
     
+    private func deleteFolder(folder:Folder){
+        do{
+            context.delete(folder)
+            try context.save()
+        }catch{
+            print(error)
+        }
+    }
+    
     //MARK:- UIButton
     @IBAction func createCategoryFunction(_ sender: UIBarButtonItem) {
         
@@ -139,18 +148,19 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               let alert = UIAlertController(title: "", message: "Are you sure you want to delete note?", preferredStyle: .actionSheet)
-               let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-               
-                
-               })
-               let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-               alert.addAction(deleteButton)
-               alert.addAction(cancelButton)
-               self.present(alert, animated: true, completion: nil)
-           }
-       }
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "", message: "Are you sure you want to delete note?", preferredStyle: .actionSheet)
+            let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                self.deleteFolder(folder: self.folders[indexPath.row])
+                self.folders.remove(at: indexPath.row)
+                self.tbCategories.reloadData()
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alert.addAction(deleteButton)
+            alert.addAction(cancelButton)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -163,5 +173,3 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
         self.navigationController?.pushViewController(destinationView, animated: true)
     }
 }
-
-
