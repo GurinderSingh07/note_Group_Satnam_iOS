@@ -19,16 +19,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.16433212159999999" green="0.73401623959999995" blue="0.98916119339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-notes.png" translatesAutoresizingMaskIntoConstraints="NO" id="vm6-X0-zQF">
-                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="vm6-X0-zQF">
+                                <rect key="frame" x="122" y="363" width="170" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="BOp-sG-1Dt"/>
-                                    <constraint firstAttribute="width" constant="150" id="afh-sv-7HF"/>
+                                    <constraint firstAttribute="height" constant="170" id="BOp-sG-1Dt"/>
+                                    <constraint firstAttribute="width" constant="170" id="afh-sv-7HF"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-0Y-Aaj">
-                                <rect key="frame" x="133" y="533" width="148" height="35"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
+                                <rect key="frame" x="144" y="543" width="126.5" height="39"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -54,6 +54,6 @@
     </scenes>
     <resources>
         <image name="BGImage" width="1000" height="2059"/>
-        <image name="apple-notes.png" width="216.86747741699219" height="216.86747741699219"/>
+        <image name="logo.png" width="216" height="216"/>
     </resources>
 </document>

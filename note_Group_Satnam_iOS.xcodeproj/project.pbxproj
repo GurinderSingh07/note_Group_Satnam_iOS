@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		9B64BC05265E99D80075D39A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64BC04265E99D80075D39A /* AppDelegate.swift */; };
 		9B64BC07265E99D80075D39A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64BC06265E99D80075D39A /* SceneDelegate.swift */; };
-		9B64BC09265E99D80075D39A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B64BC08265E99D80075D39A /* ViewController.swift */; };
 		9B64BC0C265E99D80075D39A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64BC0A265E99D80075D39A /* Main.storyboard */; };
 		9B64BC0F265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B64BC0D265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld */; };
 		9B64BC11265E99E10075D39A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B64BC10265E99E10075D39A /* Assets.xcassets */; };
 		9B64BC14265E99E10075D39A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B64BC12265E99E10075D39A /* LaunchScreen.storyboard */; };
-		9B98A9D9265FBFD100721F32 /* apple-notes.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B98A9D8265FBFD100721F32 /* apple-notes.png */; };
+		9B98A9DB265FC1A600721F32 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B98A9DA265FC1A600721F32 /* logo.png */; };
+		9B98A9DF265FC91C00721F32 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B98A9DE265FC91C00721F32 /* WelcomeController.swift */; };
+		9B98A9E1265FCB0700721F32 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B98A9E0265FCB0700721F32 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9B64BC01265E99D80075D39A /* My Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B64BC04265E99D80075D39A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B64BC06265E99D80075D39A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9B64BC08265E99D80075D39A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B64BC0B265E99D80075D39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B64BC0E265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = note_Group_Satnam_iOS.xcdatamodel; sourceTree = "<group>"; };
 		9B64BC10265E99E10075D39A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B64BC13265E99E10075D39A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B64BC15265E99E10075D39A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B98A9D8265FBFD100721F32 /* apple-notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-notes.png"; sourceTree = "<group>"; };
+		9B98A9DA265FC1A600721F32 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../Downloads/logo.png; sourceTree = "<group>"; };
+		9B98A9DE265FC91C00721F32 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		9B98A9E0265FCB0700721F32 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +62,11 @@
 		9B64BC03265E99D80075D39A /* note_Group_Satnam_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9B98A9D8265FBFD100721F32 /* apple-notes.png */,
+				9B98A9DD265FC8E000721F32 /* TableViewCells */,
+				9B98A9DC265FC8CF00721F32 /* ViewControllers */,
+				9B98A9DA265FC1A600721F32 /* logo.png */,
 				9B64BC04265E99D80075D39A /* AppDelegate.swift */,
 				9B64BC06265E99D80075D39A /* SceneDelegate.swift */,
-				9B64BC08265E99D80075D39A /* ViewController.swift */,
 				9B64BC0A265E99D80075D39A /* Main.storyboard */,
 				9B64BC10265E99E10075D39A /* Assets.xcassets */,
 				9B64BC12265E99E10075D39A /* LaunchScreen.storyboard */,
@@ -71,6 +74,22 @@
 				9B64BC0D265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld */,
 			);
 			path = note_Group_Satnam_iOS;
+			sourceTree = "<group>";
+		};
+		9B98A9DC265FC8CF00721F32 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9B98A9DE265FC91C00721F32 /* WelcomeController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9B98A9DD265FC8E000721F32 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				9B98A9E0265FCB0700721F32 /* TableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,8 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B64BC14265E99E10075D39A /* LaunchScreen.storyboard in Resources */,
+				9B98A9DB265FC1A600721F32 /* logo.png in Resources */,
 				9B64BC11265E99E10075D39A /* Assets.xcassets in Resources */,
-				9B98A9D9265FBFD100721F32 /* apple-notes.png in Resources */,
 				9B64BC0C265E99D80075D39A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,9 +164,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B64BC09265E99D80075D39A /* ViewController.swift in Sources */,
+				9B98A9E1265FCB0700721F32 /* TableViewCell.swift in Sources */,
 				9B64BC0F265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld in Sources */,
 				9B64BC05265E99D80075D39A /* AppDelegate.swift in Sources */,
+				9B98A9DF265FC91C00721F32 /* WelcomeController.swift in Sources */,
 				9B64BC07265E99D80075D39A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
