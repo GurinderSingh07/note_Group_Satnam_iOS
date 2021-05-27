@@ -102,7 +102,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="iuH-08-pSJ"/>
-                        <barButtonItem image="plus.circle.fill" catalog="system" largeContentSizeImage="plus.circle.fill" id="uTs-Wn-eQq">
+                        <barButtonItem image="plus.circle" catalog="system" largeContentSizeImage="plus.circle.fill" id="uTs-Wn-eQq">
                             <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="tapCreateCategory:" destination="BYZ-38-t0r" id="l44-8I-40B"/>
@@ -211,7 +211,30 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DPS-en-TCt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="4KY-QX-mEG"/>
+                    <toolbarItems>
+                        <barButtonItem image="trash" catalog="system" id="haQ-P8-8fR">
+                            <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="jsQ-EN-fnI"/>
+                        <barButtonItem image="plus.circle" catalog="system" id="C9k-N4-6Fo">
+                            <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="09g-rj-D1S"/>
+                        <barButtonItem title="Item" image="arrow.up.doc" catalog="system" id="1mb-D6-mGR">
+                            <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="4KY-QX-mEG">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="ellipsis.circle" catalog="system" id="iNo-ui-nTl">
+                                <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" image="folder.badge.minus" catalog="system" id="QZb-6r-Exs">
+                                <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gck-aC-KfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -242,8 +265,13 @@
     </scenes>
     <resources>
         <image name="BGImage" width="1000" height="2059"/>
+        <image name="arrow.up.doc" catalog="system" width="115" height="128"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="folder.badge.minus" catalog="system" width="128" height="86"/>
         <image name="logo.png" width="216" height="216"/>
         <image name="note-pencil" width="288" height="288"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>
