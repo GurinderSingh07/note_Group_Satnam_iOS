@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import CoreData
 
 class WelcomeController: UIViewController {
     
     //MARK:- IBOutlets
     @IBOutlet weak var tbCategories: UITableView!
+    @IBOutlet weak var createCategoryButton: UIBarButtonItem!
     
     //MARK:- MemberVariables
     let searchController = UISearchController(searchResultsController: nil)
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var folders = [Folder]()
     
@@ -35,6 +39,7 @@ class WelcomeController: UIViewController {
     func setupInitials(){
         
         showSearchBar()
+        loadFolders()
     }
     
     func showSearchBar() {
@@ -62,14 +67,30 @@ class WelcomeController: UIViewController {
                 UIFont.systemFont(ofSize: 40)]
     }
     
+    private func loadFolders(predicate : NSPredicate? = nil)  {
+        let request : NSFetchRequest<Folder> = Folder.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        if predicate != nil {
+            request.predicate = predicate
+        }
+        do {
+            self.folders = try self.context.fetch(request)
+        } catch  {
+            print(error)
+        }
+    }
+    
     //MARK:- UIButton
-    @IBAction func tapCreateCategory(_ sender: UIBarButtonItem) {
+    @IBAction func createCategoryFunction(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "Create Category", message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {field in field.placeholder = "Category Name"})
         alert.addAction(UIAlertAction(title: "Create", style: .default, handler: {
             _ in
             
+            
+            self.loadFolders()
+            self.tbCategories.reloadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -80,14 +101,18 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return folders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         
+        // Set View Container corner radius
         cell.viewContainer.layer.cornerRadius = 5
+        
+        cell.lblTitle.text = "\(folders[indexPath.row].name ?? "")"
+        cell.lblSubtitle.text = "\(folders[indexPath.row].notes?.count ?? 0) - notes"
         
         return cell
     }
@@ -96,7 +121,8 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
            if editingStyle == .delete {
                let alert = UIAlertController(title: "", message: "Are you sure you want to delete note?", preferredStyle: .actionSheet)
                let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
-                  
+               
+                
                })
                let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                alert.addAction(deleteButton)
@@ -108,5 +134,13 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.title = ""
+        
+        let destinationView = self.storyboard?.instantiateViewController(identifier: "NotesView") as! NotesController
+        
+        destinationView.parentFolder = folders[indexPath.row]
+        
+        self.navigationController?.pushViewController(destinationView, animated: true)
     }
 }
+
+

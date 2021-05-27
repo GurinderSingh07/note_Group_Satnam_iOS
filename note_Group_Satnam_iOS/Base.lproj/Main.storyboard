@@ -105,13 +105,14 @@
                         <barButtonItem image="plus.circle" catalog="system" largeContentSizeImage="plus.circle.fill" id="uTs-Wn-eQq">
                             <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="tapCreateCategory:" destination="BYZ-38-t0r" id="l44-8I-40B"/>
+                                <action selector="createCategoryFunction:" destination="BYZ-38-t0r" id="l44-8I-40B"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="8FN-Ot-w2X"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="createCategoryButton" destination="uTs-Wn-eQq" id="6rP-Tk-h0u"/>
                         <outlet property="tbCategories" destination="kSL-SM-u0J" id="va4-pt-m2K"/>
                     </connections>
                 </viewController>
@@ -122,7 +123,7 @@
         <!--Notes Controller-->
         <scene sceneID="vPd-gN-Eg7">
             <objects>
-                <viewController id="L9q-vP-BnG" customClass="NotesController" customModule="My_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotesView" id="L9q-vP-BnG" customClass="NotesController" customModule="My_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q20-dA-BNj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

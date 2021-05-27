@@ -17,6 +17,8 @@ class NotesController: UIViewController {
     @IBOutlet weak var plusButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
+    //MARK:- MemberVariables
+    var parentFolder : Folder?
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
