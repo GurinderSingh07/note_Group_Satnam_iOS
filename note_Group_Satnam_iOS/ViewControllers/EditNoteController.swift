@@ -136,13 +136,17 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     //MARK:- Fetch play and stop audio
     @IBAction func stopButton(_ sender: UIButton) {
         player.stop()
+        player.currentTime = 0
+        playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
     }
     
     @IBAction func playPauseAudio(_ sender: Any) {
         if player.isPlaying{
             player.pause()
+            playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
         }else{
             player.play()
+            playButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
     
