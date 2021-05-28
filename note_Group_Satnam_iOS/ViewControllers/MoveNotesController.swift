@@ -89,7 +89,20 @@ extension MoveNotesController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: "Move to \(folders[indexPath.row].name!)", message: "Are you sure?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Move", style: .default) { (action) in
-           
+            for note in self.selectedNotes! {
+                note.parentFolder = self.folders[indexPath.row]
+            }
+            do{
+                try self.context.save()
+            }catch{
+                print(error)
+            }
+            self.delegate?.editMode = false
+            self.delegate?.enableSelection(editMode: false)
+            self.delegate?.loadNotes()
+            self.delegate?.tableNoteViews.reloadData()
+            // dismiss the vc
+            self.dismiss(animated: true, completion: nil)
         }
         
         let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
