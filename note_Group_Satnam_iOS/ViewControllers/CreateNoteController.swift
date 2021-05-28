@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreData
+import AVFoundation
 
 class CreateNoteController: UIViewController ,CLLocationManagerDelegate
                             ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
@@ -31,11 +32,21 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
     var parentFolder : Folder?
     var delegate : NotesController?
     var locationManager = CLLocationManager()
+    var isRecoding = false
+    var isRecorded = false
+    var isPlaying = false
+    var hasSetupPlayer = false
+    var timer = Timer()
     
     //MARK: - Image member variables
     private var selectedImage : UIImage?
     let imagePicker = UIImagePickerController()
     
+    //MARK:- Audio member variables
+    var isAudioRecordingGranted: Bool!
+    var soundRecorder : AVAudioRecorder!
+    var soundPlayer = AVAudioPlayer()
+    var fileName = ""
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -62,6 +73,9 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
         crossButtonAudio.isEnabled = false
         sliderAudio.value = 0
         sliderAudio.isEnabled = false
+        
+        //check for audio permission and set isAudioRecordingGranted valiable
+        checkRecordPermission()
         
         // Set navigation tool bar hidden
         self.navigationController?.toolbar.isHidden = true
@@ -179,16 +193,145 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
         
     }
     
-    //MARK:- UIButtons
+    //MARK:- Audio button Functions
     @IBAction func playAudioFunction(_ sender: UIButton) {
-        
+        if !hasSetupPlayer{
+            setupPlayer()
+            hasSetupPlayer = true
+        }
+        print("\(soundPlayer.isPlaying)")
+        if soundPlayer.isPlaying {
+            soundPlayer.pause()
+            sender.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+            timer.invalidate()
+        }else{
+            soundPlayer.play()
+            sender.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+        }
     }
     
+    @objc func updateSlider(){
+        sliderAudio.value = Float(soundPlayer.currentTime)
+        if sliderAudio.value == 0{
+            playButtonAudio.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+            isPlaying = !isPlaying
+        }
+    }
+   
     @IBAction func deleteAudioFunction(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Delete", message: "Are You sure to delete the Audio Recording?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {_ in self.deleteRecording()}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
    
     @IBAction func addAudioFunction(_ sender: UIButton) {
-        
+        isRecoding = !isRecoding
+        isPlaying = false
+        hasSetupPlayer = false
+        if isRecorded{
+            deleteRecording()
+            isRecorded = !isRecorded
+        }
+        if isRecoding{
+            sender.setBackgroundImage(UIImage(systemName: "stop.fill"), for: .normal)
+            setupRecorder()
+            soundRecorder.record()
+        }else{
+            self.playButtonAudio.isEnabled = true
+            self.crossButtonAudio.isEnabled = true
+            self.sliderAudio.isEnabled = true
+            self.sliderAudio.value = 0
+            soundRecorder.stop()
+            sender.setBackgroundImage(UIImage(systemName: "mic"), for: .normal)
+            isRecorded = !isRecorded
+            
+        }
+    }
+}
+
+//MARK: - Extension - audio recording
+extension CreateNoteController : AVAudioRecorderDelegate,AVAudioPlayerDelegate{
+    
+    //pop-up for audio permissions
+    func checkRecordPermission(){
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSession.RecordPermission.granted:
+            isAudioRecordingGranted = true
+            break
+        case AVAudioSession.RecordPermission.denied:
+            isAudioRecordingGranted = false
+            break
+        case AVAudioSession.RecordPermission.undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission({ (allowed) in
+                if allowed {
+                    self.isAudioRecordingGranted = true
+                } else {
+                    self.isAudioRecordingGranted = false
+                }
+            })
+            break
+        default:
+            break
+        }
+    }
+    
+    //get url of directory where we want to save Audio
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupRecorder() {
+        if isAudioRecordingGranted{
+            fileName = "\(Int64(Date().timeIntervalSince1970 * 1_000))_audio.m4a"
+            let audioFilename = getDocumentsDirectory().appendingPathComponent(fileName)
+            let recordSetting = [ AVFormatIDKey : kAudioFormatAppleLossless,
+                                  AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue,
+                                  AVEncoderBitRateKey : 320000,
+                                  AVNumberOfChannelsKey : 2,
+                                  AVSampleRateKey : 44100.2] as [String : Any]
+            
+            do {
+                soundRecorder = try AVAudioRecorder(url: audioFilename, settings: recordSetting )
+                soundRecorder.delegate = self
+                soundRecorder.prepareToRecord()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func deleteRecording()  {
+        guard fileName != "" else { return }
+        let audioUrl = getDocumentsDirectory().appendingPathComponent(fileName)
+        do {
+            timer.invalidate()
+            try FileManager.default.removeItem(at: audioUrl)
+            fileName = ""
+            isPlaying = false
+            hasSetupPlayer = false
+            self.crossButtonAudio.isEnabled = false
+            self.sliderAudio.isEnabled = false
+            self.playButtonAudio.isEnabled = false
+            self.sliderAudio.value = 0
+        } catch  {
+            print(error)
+        }
+    }
+    
+    func setupPlayer() {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(fileName )
+        do {
+            try soundPlayer = AVAudioPlayer(contentsOf: audioFilename)
+            soundPlayer.delegate = self
+            soundPlayer.prepareToPlay()
+            soundPlayer.volume = 1.0
+            sliderAudio.maximumValue = Float(soundPlayer.duration)
+            sliderAudio.value = 0
+        } catch {
+            print(error)
+        }
     }
 }
