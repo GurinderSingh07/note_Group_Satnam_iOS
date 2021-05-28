@@ -18,6 +18,9 @@ class NotesController: UIViewController {
     @IBOutlet weak var plusButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     
+    @IBOutlet weak var tableNoteViews: UITableView!
+    
+    
     //MARK:- MemberVariables
     var editMode = false
     

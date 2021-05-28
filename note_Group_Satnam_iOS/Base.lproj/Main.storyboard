@@ -256,6 +256,7 @@
                         <outlet property="moveButton" destination="1mb-D6-mGR" id="duZ-I3-eX6"/>
                         <outlet property="optionButton" destination="iNo-ui-nTl" id="pDa-A5-ksd"/>
                         <outlet property="plusButton" destination="C9k-N4-6Fo" id="fFB-x3-jXc"/>
+                        <outlet property="tableNoteViews" destination="vJB-el-cF7" id="Zgh-g3-rLE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gck-aC-KfA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
