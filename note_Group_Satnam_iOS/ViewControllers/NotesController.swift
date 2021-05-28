@@ -67,17 +67,7 @@ class NotesController: UIViewController {
                 UIFont.systemFont(ofSize: 20)]
     }
     
-    func showSearchBar() {
-        
-        // Set search bar textfield attributes.
-        searchController.searchBar.placeholder = "Search Note"
-        searchController.searchBar.searchTextField.backgroundColor = UIColor.white
-        searchController.searchBar.searchTextField.textColor = UIColor.black
-        
-        searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
+    
     
     func loadNotes(predicate : NSPredicate? = nil,search: [NSSortDescriptor]?=nil)  {
         
@@ -193,6 +183,37 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
         destinationView.note = notes[indexPath.row]
         self.navigationController?.pushViewController(destinationView, animated: true)
     }
+}
+
+//MARK: - search bar delegate methods
+extension NotesController : UISearchBarDelegate {
+
+    func showSearchBar() {
+        //setting the delegate for searchbar
+        searchController.searchBar.delegate = self
+        // Set search bar textfield attributes.
+        searchController.searchBar.placeholder = "Search Note"
+        searchController.searchBar.searchTextField.backgroundColor = UIColor.white
+        searchController.searchBar.searchTextField.textColor = UIColor.black
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let text:String = searchBar.text!
+        if text.count == 0 {
+            self.loadNotes()
+        }else{
+            //following is to filter notes with title or detail
+            let predicate = NSPredicate(format: "title CONTAINS[cd] %@ OR detail CONTAINS[cd] %@", argumentArray: [text,text])
+            self.loadNotes(predicate: predicate)
+        }
+        self.tableNoteViews.reloadData()
+    }
+    
 }
 
 extension Date {
