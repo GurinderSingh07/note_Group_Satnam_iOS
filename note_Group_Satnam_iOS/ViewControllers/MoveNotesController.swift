@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
 class MoveNotesController: UIViewController {
-
+    
     //MARK:- IBOutlets
     @IBOutlet weak var navigationBarCustom: UINavigationBar!
+    
+    //MARK:- Member Variables
+    var folders = [Folder]()
+    var selectedNotes: [Note]? {
+        didSet {
+            loadFolders()
+        }
+    }
+    var delegate : NotesController?
+    // context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     //MARK:- ViewLifeCycle
@@ -33,6 +45,20 @@ class MoveNotesController: UIViewController {
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 20) ??
                 UIFont.systemFont(ofSize: 20)]
+    }
+
+    func loadFolders() {
+        let request: NSFetchRequest<Folder> = Folder.fetchRequest()
+        
+        // predicate
+        let folderPredicate = NSPredicate(format: "NOT name MATCHES %@", selectedNotes?[0].parentFolder?.name ?? "")
+        request.predicate = folderPredicate
+        
+        do {
+            folders = try context.fetch(request)
+        } catch {
+            print("Error fetching data \(error.localizedDescription)")
+        }
     }
     
      //MARK:- UIButtons
