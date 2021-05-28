@@ -40,7 +40,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         fetchNote()
     }
     
-    //MARK:- PrivateMethods
+    //MARK:- set GUI
     func setupInitials(){
         
         // Set navigation tool bar hidden
@@ -71,6 +71,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveData))
     }
     
+    //MARK: - Fetch note
     private func fetchNote()  {
         guard let noteFetched = note else { return }
         titleField.text = noteFetched.title
@@ -85,7 +86,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
             playButton.isEnabled = false
             stopButton.isEnabled = false
         }else{
-            
+            loadAudio(path: noteFetched.voice!)
         }
  
         if noteFetched.latitude != 0 && noteFetched.longitude != 0 {
@@ -93,6 +94,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         }
     }
     
+    //MARK: - Get and set location on map
     func setLocationOnMap(note:Note)  {
         //define span
         let latDelta:CLLocationDegrees = 0.05
@@ -116,6 +118,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         self.mapView.addAnnotation(annotation)
     }
     
+    //MARK: - Save Data
     @objc func saveData(){
         if titleField.text == "" || detailField.text == "" {
             let alert = UIAlertController(title: "WARNING!", message: "Data should be filled properly", preferredStyle: .alert)
@@ -130,13 +133,22 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         self.navigationController?.popViewController(animated: true)
     }
     
-    //MARK:- UIButtons
+    //MARK:- Fetch play and stop audio
     @IBAction func stopButton(_ sender: UIButton) {
-        
+        player.stop()
     }
     
     @IBAction func playPauseAudio(_ sender: Any) {
-        
+        if player.isPlaying{
+            player.pause()
+        }else{
+            player.play()
+        }
+    }
+    
+    func loadAudio(path:String) {
+        fileName = path
+        setupPlayer()
     }
 }
 //MARK: - AUDIO Extension
