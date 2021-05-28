@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import AVFoundation
 
 class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewDelegate{
     
@@ -26,6 +27,8 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     
     var delegate : NotesController?
     var note : Note?
+    var player = AVAudioPlayer()
+    var fileName: String?
     
     //MARK:- ViewLifeCycle
     override func viewDidLoad() {
@@ -131,5 +134,27 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     
     @IBAction func playPauseAudio(_ sender: Any) {
         
+    }
+}
+//MARK: - AUDIO Extension
+extension EditNoteController : AVAudioRecorderDelegate,AVAudioPlayerDelegate{
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func setupPlayer() {
+        guard  fileName != nil else { return }
+        print("file in edit note : - \(fileName ?? "")")
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(fileName ?? "")
+        do {
+            try player = AVAudioPlayer(contentsOf: audioFilename)
+            player.delegate = self
+            player.prepareToPlay()
+            player.volume = 1.0
+        } catch {
+            print(error)
+        }
     }
 }
