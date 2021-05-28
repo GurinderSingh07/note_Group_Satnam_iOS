@@ -131,10 +131,48 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
             self.mapView.showsUserLocation = false
         }
     }
-
     
+    //MARK: - fetch photo
+    //to show action sheet to select camera or gallery
     @IBAction func addPhotoFunction(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+            self.openCamera()
+        }))
+
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+            self.openGallary()
+        }))
+
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func openCamera() {
+        if(UIImagePickerController .isSourceTypeAvailable(UIImagePickerController.SourceType.camera)) {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        } else {
+            let alert  = UIAlertController(title: "Error!", message: "You don't have camera", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+    func openGallary() {
+        print("Inside gallery")
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        imagePicker.allowsEditing = true
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //This is called when user click on choose in UIImagePicker.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.selectedImage = info[.originalImage] as? UIImage
+        self.imageView.image = self.selectedImage
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func saveData(){
