@@ -24,6 +24,7 @@
 		9B98A9EA265FEB0700721F32 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B98A9E6265FEB0700721F32 /* Note+CoreDataProperties.swift */; };
 		9B98A9EC265FF26F00721F32 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B98A9EB265FF26F00721F32 /* NotesController.swift */; };
 		9B98A9EE2660088F00721F32 /* MoveNotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B98A9ED2660088F00721F32 /* MoveNotesController.swift */; };
+		D5AFFEB92660A73C0023ECD6 /* InitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFFEB82660A73C0023ECD6 /* InitialData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		9B98A9E6265FEB0700721F32 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9B98A9EB265FF26F00721F32 /* NotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		9B98A9ED2660088F00721F32 /* MoveNotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveNotesController.swift; sourceTree = "<group>"; };
+		D5AFFEB82660A73C0023ECD6 /* InitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				9B64BC12265E99E10075D39A /* LaunchScreen.storyboard */,
 				9B64BC15265E99E10075D39A /* Info.plist */,
 				9B64BC0D265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld */,
+				D5AFFEB82660A73C0023ECD6 /* InitialData.swift */,
 			);
 			path = note_Group_Satnam_iOS;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				9B98A9E1265FCB0700721F32 /* TableViewCell.swift in Sources */,
 				9B98A9E8265FEB0700721F32 /* Folder+CoreDataProperties.swift in Sources */,
+				D5AFFEB92660A73C0023ECD6 /* InitialData.swift in Sources */,
 				9B64BC0F265E99D80075D39A /* note_Group_Satnam_iOS.xcdatamodeld in Sources */,
 				9B98A9EE2660088F00721F32 /* MoveNotesController.swift in Sources */,
 				9B64BC05265E99D80075D39A /* AppDelegate.swift in Sources */,

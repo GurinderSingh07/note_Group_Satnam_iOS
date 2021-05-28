@@ -26,6 +26,8 @@ class WelcomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Initial Data is set up for testing
+        //InitialData.createInitialData()
         setupInitials()
     }
     
