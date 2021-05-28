@@ -201,6 +201,9 @@ extension NotesController : UISearchBarDelegate {
         definesPresentationContext = true
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.tableNoteViews.reloadData()
+    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let text:String = searchBar.text!
@@ -211,6 +214,11 @@ extension NotesController : UISearchBarDelegate {
             let predicate = NSPredicate(format: "title CONTAINS[cd] %@ OR detail CONTAINS[cd] %@", argumentArray: [text,text])
             self.loadNotes(predicate: predicate)
         }
+        self.tableNoteViews.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       self.loadNotes()
         self.tableNoteViews.reloadData()
     }
     
