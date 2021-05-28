@@ -72,7 +72,7 @@ extension MoveNotesController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return folders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +81,21 @@ extension MoveNotesController: UITableViewDelegate,UITableViewDataSource{
         
         cell.viewContainer.layer.cornerRadius = 5
         
+        cell.lblTitle.text = folders[indexPath.row].name
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "Move to \(folders[indexPath.row].name!)", message: "Are you sure?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Move", style: .default) { (action) in
+           
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        noAction.setValue(UIColor.orange, forKey: "titleTextColor")
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        present(alert, animated: true, completion: nil)
     }
 }

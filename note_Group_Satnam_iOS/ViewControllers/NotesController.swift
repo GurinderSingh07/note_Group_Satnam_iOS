@@ -143,9 +143,13 @@ class NotesController: UIViewController {
     
     @IBAction func moveFunction(_ sender: Any) {
         
-        let destinationView = self.storyboard?.instantiateViewController(identifier: "move_note_view") as! MoveNotesController
-        
-        self.present(destinationView, animated: true, completion: nil)
+        if let indexPaths = self.tableNoteViews.indexPathsForSelectedRows{
+            let rows = indexPaths.map{$0.row}
+            let destinationView = self.storyboard?.instantiateViewController(identifier: "move_note_view") as! MoveNotesController
+            destinationView.selectedNotes = rows.map{notes[$0]}
+            destinationView.delegate = self
+            self.present(destinationView, animated: true, completion: nil)
+        }
     }
     
     @IBAction func createNoteFunction(_ sender: Any) {
