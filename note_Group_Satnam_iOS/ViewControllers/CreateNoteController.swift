@@ -26,6 +26,9 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
     @IBOutlet weak var crossButtonAudio: UIButton!
     @IBOutlet weak var sliderAudio: UISlider!
     
+    @IBOutlet weak var lblImageStatus: UILabel!
+    
+    
     //MARK:- MemberVariables
     private var userLocation : CLLocation?
     private var isLocationEnabled = false

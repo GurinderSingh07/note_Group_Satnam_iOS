@@ -610,6 +610,7 @@
                         <outlet property="crossButtonAudio" destination="PJ0-yx-LUK" id="wNt-Yi-clP"/>
                         <outlet property="detailField" destination="imb-Sd-ziv" id="Lcx-wU-JqO"/>
                         <outlet property="imageView" destination="HTb-pb-vNm" id="14O-hi-hOS"/>
+                        <outlet property="lblImageStatus" destination="xQO-3B-P14" id="kxw-ND-4kA"/>
                         <outlet property="mapView" destination="Nm9-Kx-4dT" id="l9f-8p-Sip"/>
                         <outlet property="playButtonAudio" destination="Jgd-4n-wsn" id="kf8-YG-cah"/>
                         <outlet property="sliderAudio" destination="00y-ye-8Bf" id="bbb-LQ-09i"/>
@@ -806,6 +807,7 @@
                         <outlet property="dateLabel" destination="XAU-8C-DMB" id="XCm-YV-DQ9"/>
                         <outlet property="detailField" destination="33v-Mo-3iF" id="fYK-xK-XoI"/>
                         <outlet property="imageView" destination="VKl-hA-QgJ" id="3sK-L0-kHP"/>
+                        <outlet property="lblImageStatus" destination="zGy-cH-6X9" id="Qar-87-c6G"/>
                         <outlet property="mapView" destination="nFq-A2-Yne" id="dRt-sb-pX9"/>
                         <outlet property="playButton" destination="gqa-T7-IRK" id="GdC-ZS-oqs"/>
                         <outlet property="spaceOnToolBar" destination="qya-Ze-GaX" id="Q7m-YR-hGP"/>

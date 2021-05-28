@@ -24,7 +24,9 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var lblImageStatus: UILabel!
     
+    //MARK:- MemberVariables
     var delegate : NotesController?
     var note : Note?
     var player = AVAudioPlayer()
