@@ -77,7 +77,8 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         dateLabel.text = "Created: - \(Date.getDateWithFormat(date: noteFetched.date ?? Date()))"
         detailField.text = noteFetched.detail
         if noteFetched.image != nil {
-            
+            lblImageStatus.text = ""
+            imageView.image = UIImage(data: noteFetched.image!)
         }
         if noteFetched.voice == nil {
             spaceOnToolBar.text = "No Audio in note"

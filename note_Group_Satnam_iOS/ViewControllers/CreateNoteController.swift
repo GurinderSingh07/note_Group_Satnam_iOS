@@ -189,6 +189,7 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.selectedImage = info[.originalImage] as? UIImage
         self.imageView.image = self.selectedImage
+        lblImageStatus.text = ""
         dismiss(animated: true, completion: nil)
     }
     //MARK:- Audio button Functions
