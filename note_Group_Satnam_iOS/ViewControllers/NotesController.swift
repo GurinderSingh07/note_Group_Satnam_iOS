@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 class NotesController: UIViewController {
-
-     //MARK:- IBOutlets
+    
+    //MARK:- IBOutlets
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var optionButton: UIBarButtonItem!
     @IBOutlet weak var moveButton: UIBarButtonItem!
@@ -38,7 +38,7 @@ class NotesController: UIViewController {
         setupView()
         setupInitials()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -100,9 +100,22 @@ class NotesController: UIViewController {
         }
     }
     
+    func enableSelection(editMode : Bool)  {
+    
+        self.navigationItem.setHidesBackButton(editMode, animated: true)
+        deleteButton.isEnabled = editMode
+        moveButton.isEnabled = editMode
+        plusButton.isEnabled = !editMode
+        optionButton.isEnabled = !editMode
+        tableNoteViews.allowsMultipleSelectionDuringEditing = editMode
+        tableNoteViews.setEditing(editMode, animated: true)
+    }
+    
     //MARK:- UIButtons
-    @IBAction func editFunction(_ sender: Any) {
+    @IBAction func editFunction(_ sender: UIBarButtonItem) {
         
+        editMode = !editMode
+        enableSelection(editMode: editMode)
     }
     
     @IBAction func optionButtonFunction(_ sender: Any) {
@@ -114,7 +127,7 @@ class NotesController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "(A-Z) Descending", style: .default, handler: {
             _ in
-           
+            
         }))
         alert.addAction(UIAlertAction(title: "Date Ascending", style: .default, handler: {
             _ in
@@ -132,7 +145,7 @@ class NotesController: UIViewController {
         
         let destinationView = self.storyboard?.instantiateViewController(identifier: "move_note_view") as! MoveNotesController
         
-       self.present(destinationView, animated: true, completion: nil)
+        self.present(destinationView, animated: true, completion: nil)
     }
     
     @IBAction func createNoteFunction(_ sender: Any) {
@@ -170,21 +183,22 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        guard !editMode else { return }
         let destinationView = self.storyboard?.instantiateViewController(identifier: "edit_note_view") as! EditNoteController
-        destinationView.note = notes[indexPath.row]
         destinationView.delegate = self
+        destinationView.note = notes[indexPath.row]
         self.navigationController?.pushViewController(destinationView, animated: true)
     }
 }
 
 extension Date {
-
-     static func getDateWithFormat(date : Date) -> String {
-
+    
+    static func getDateWithFormat(date : Date) -> String {
+        
         let dateFormatter = DateFormatter()
-
+        
         dateFormatter.dateFormat = "dd/MM/yyyy, hh:mm a"
-
+        
         return dateFormatter.string(from: date)
     }
 }
