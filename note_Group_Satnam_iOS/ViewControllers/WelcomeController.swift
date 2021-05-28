@@ -45,7 +45,7 @@ class WelcomeController: UIViewController {
     }
     
     func showSearchBar() {
-        
+        searchController.searchBar.delegate = self
         // Set search bar textfield attributes.
         searchController.searchBar.placeholder = "Search Category"
         searchController.searchBar.searchTextField.backgroundColor = UIColor.white
@@ -174,4 +174,29 @@ extension WelcomeController: UITableViewDelegate,UITableViewDataSource{
         
         self.navigationController?.pushViewController(destinationView, animated: true)
     }
+}
+
+//MARK: - search bar delegate methods
+extension WelcomeController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.tbCategories.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let text:String = searchBar.text!
+        if text.count == 0 {
+            self.loadFolders()
+        }else{
+            let predicate = NSPredicate(format: "name CONTAINS[cd] %@", text)
+            self.loadFolders(predicate: predicate)
+        }
+        self.tbCategories.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.loadFolders()
+        self.tbCategories.reloadData()
+    }
+    
 }
