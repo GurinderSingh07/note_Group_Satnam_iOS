@@ -49,7 +49,7 @@ class NotesController: UIViewController {
     func setupInitials(){
         
         navigationController?.navigationBar.prefersLargeTitles = false
-        
+        self.enableSelection(editMode: false)
         self.navigationItem.title = parentFolder?.name
         showSearchBar()
         loadNotes()
