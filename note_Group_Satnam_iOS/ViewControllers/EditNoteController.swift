@@ -14,19 +14,15 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     //MARK:- IBOutlets
     @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var viewDescription: UIView!
-    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var detailField: UITextView!
     @IBOutlet weak var titleField: UITextField!
-    
     @IBOutlet weak var playButton: UIButton!
-    
     @IBOutlet weak var spaceOnToolBar: UILabel!
-    
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
+    
     
     var delegate : NotesController?
     var note : Note?
