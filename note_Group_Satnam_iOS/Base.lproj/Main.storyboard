@@ -555,6 +555,9 @@
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="mic.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="addAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="j8W-wI-KhE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jg0-GS-Hco">
                                         <rect key="frame" x="324" y="10.5" width="30" height="28"/>
@@ -565,8 +568,7 @@
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="camera.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="addAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="kxc-Uh-yXe"/>
-                                            <action selector="addPhotoFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="VhM-6w-fis"/>
+                                            <action selector="addPhotoFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="c3x-uc-7gM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -749,7 +751,6 @@
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="play.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="playAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="Hws-vt-SyV"/>
                                             <action selector="playPauseAudio:" destination="013-lb-0RT" eventType="touchUpInside" id="49s-s8-JRi"/>
                                         </connections>
                                     </button>
@@ -768,7 +769,6 @@
                                         <color key="tintColor" red="0.0" green="0.69745516780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" backgroundImage="stop.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="playAudioFunction:" destination="1O5-fu-OmW" eventType="touchUpInside" id="vyl-0U-qFn"/>
                                             <action selector="stopButton:" destination="013-lb-0RT" eventType="touchUpInside" id="Lzo-kF-SUc"/>
                                         </connections>
                                     </button>
