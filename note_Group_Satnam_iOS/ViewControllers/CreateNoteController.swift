@@ -188,52 +188,6 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
         self.imageView.image = self.selectedImage
         dismiss(animated: true, completion: nil)
     }
-    
-    //MARK: - Save Data after validation
-    @objc func saveData(){
-        guard self.parentFolder != nil else { return }
-        if titleField.text == "" || detailField.text == "" {
-            let alert = UIAlertController(title: "WARNING!", message: "Data should be filled properly", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-        let title = titleField.text
-        let detail = detailField.text
-        var lat : Double = 0
-        var long : Double = 0
-        if isLocationEnabled{
-            lat = userLocation!.coordinate.latitude
-            long = userLocation!.coordinate.longitude
-        }
-        var imageData : Data?
-        if selectedImage != nil{
-            imageData = selectedImage?.pngData()
-        }
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let newNote = Note(context: context)
-        newNote.title = title
-        newNote.detail = detail
-        newNote.date = Date()
-        newNote.latitude = lat
-        newNote.longitude = long
-        newNote.image = imageData
-        newNote.parentFolder = self.parentFolder
-        if fileName != ""{
-            newNote.voice = fileName
-            print("file name in saved: - \(fileName)")
-        }
-        do {
-            try context.save()
-        } catch  {
-            print(error)
-        }
-        delegate?.loadNotes()
-        delegate?.tableNoteViews.reloadData()
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     //MARK:- Audio button Functions
     @IBAction func playAudioFunction(_ sender: UIButton) {
         if !hasSetupPlayer{
@@ -290,6 +244,53 @@ class CreateNoteController: UIViewController ,CLLocationManagerDelegate
             
         }
     }
+    
+    //MARK: - Save Data after validation
+    @objc func saveData(){
+        guard self.parentFolder != nil else { return }
+        if titleField.text == "" || detailField.text == "" {
+            let alert = UIAlertController(title: "WARNING!", message: "Data should be filled properly", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        let title = titleField.text
+        let detail = detailField.text
+        var lat : Double = 0
+        var long : Double = 0
+        if isLocationEnabled{
+            lat = userLocation!.coordinate.latitude
+            long = userLocation!.coordinate.longitude
+        }
+        var imageData : Data?
+        if selectedImage != nil{
+            imageData = selectedImage?.pngData()
+        }
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let newNote = Note(context: context)
+        newNote.title = title
+        newNote.detail = detail
+        newNote.date = Date()
+        newNote.latitude = lat
+        newNote.longitude = long
+        newNote.image = imageData
+        newNote.parentFolder = self.parentFolder
+        if fileName != ""{
+            newNote.voice = fileName
+            print("file name in saved: - \(fileName)")
+        }
+        do {
+            try context.save()
+        } catch  {
+            print(error)
+        }
+        delegate?.loadNotes()
+        delegate?.tableNoteViews.reloadData()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+
 }
 
 //MARK: - Extension - audio recording
