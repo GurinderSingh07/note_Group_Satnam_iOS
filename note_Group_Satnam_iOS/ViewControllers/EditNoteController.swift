@@ -88,10 +88,8 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
             
         }
  
-        if noteFetched.latitude == 0 && noteFetched.longitude == 0 {
-            
-        }else{
-            
+        if noteFetched.latitude != 0 && noteFetched.longitude != 0 {
+            self.setLocationOnMap(note: noteFetched)
         }
     }
     
@@ -100,6 +98,7 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         let latDelta:CLLocationDegrees = 0.05
         let longDelta:CLLocationDegrees = 0.05
         let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        //to print location coordinates of loaction that we get.
         print("got location: \(note.latitude) , \(note.longitude)")
         //get location
         let location = CLLocationCoordinate2D(latitude: note.latitude, longitude: note.longitude)
