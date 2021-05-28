@@ -75,10 +75,8 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
         titleField.text = noteFetched.title
         dateLabel.text = "Created: - \(Date.getDateWithFormat(date: noteFetched.date ?? Date()))"
         detailField.text = noteFetched.detail
-        if noteFetched.image == nil {
-            imageView.image = UIImage(named: "no_image_found.jpg")
-        }else{
-            imageView.image = UIImage(data: noteFetched.image!)
+        if noteFetched.image != nil {
+            
         }
         if noteFetched.voice == nil {
             spaceOnToolBar.text = "No Audio in note"
@@ -117,7 +115,17 @@ class EditNoteController: UIViewController ,CLLocationManagerDelegate,MKMapViewD
     }
     
     @objc func saveData(){
-        
+        if titleField.text == "" || detailField.text == "" {
+            let alert = UIAlertController(title: "WARNING!", message: "Data should be filled properly", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        note?.title = titleField.text
+        note?.detail = detailField.text
+        delegate?.loadNotes()
+        delegate?.tableNoteViews.reloadData()
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK:- UIButtons
