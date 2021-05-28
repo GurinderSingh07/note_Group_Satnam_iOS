@@ -138,7 +138,8 @@ class NotesController: UIViewController {
     @IBAction func createNoteFunction(_ sender: Any) {
         
         let destination = self.storyboard?.instantiateViewController(identifier: "create_note_view") as! CreateNoteController
-        
+        destination.parentFolder = self.parentFolder
+        destination.delegate = self
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
