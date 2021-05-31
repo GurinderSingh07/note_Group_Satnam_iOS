@@ -163,7 +163,21 @@ class NotesController: UIViewController {
     }
     
     @IBAction func deleteFunction(_ sender: Any) {
-        
+		if let indexPaths = self.tableNoteViews.indexPathsForSelectedRows {
+            let alert = UIAlertController(title: "Delete notes", message: "Are you sure?", preferredStyle: .actionSheet)
+            let deleteButton = UIAlertAction(title: "Delete", style: .destructive, handler:{ _ in
+                let rows = (indexPaths.map {$0.row}).sorted(by: >)
+                let _ = rows.map {self.deleteNote(note: self.notes[$0])}
+                self.loadNotes()
+                self.tableNoteViews.reloadData()
+                self.editMode = !self.editMode
+                self.enableSelection(editMode: self.editMode)
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alert.addAction(deleteButton)
+            alert.addAction(cancelButton)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
