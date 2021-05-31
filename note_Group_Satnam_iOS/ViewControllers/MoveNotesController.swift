@@ -33,7 +33,7 @@ class MoveNotesController: UIViewController {
         setupView()
     }
     
-    //MARK:- PrivateMethods
+   
     func setupInitials(){
         
     }
@@ -46,7 +46,8 @@ class MoveNotesController: UIViewController {
              NSAttributedString.Key.font: UIFont(name: "Marker Felt", size: 20) ??
                 UIFont.systemFont(ofSize: 20)]
     }
-
+    
+    //MARK:- Load list of folders
     func loadFolders() {
         let request: NSFetchRequest<Folder> = Folder.fetchRequest()
         
@@ -61,13 +62,14 @@ class MoveNotesController: UIViewController {
         }
     }
     
-     //MARK:- UIButtons
+     //MARK:- Cancel button
     @IBAction func cancelButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
     }
 }
 
+//MARK:- Function for tables view
 extension MoveNotesController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

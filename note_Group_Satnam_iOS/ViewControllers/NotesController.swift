@@ -45,7 +45,7 @@ class NotesController: UIViewController {
         self.navigationController?.toolbar.isHidden = false
     }
     
-    //MARK:- PrivateMethods
+    //MARK:- Initial value
     func setupInitials(){
         
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -67,6 +67,7 @@ class NotesController: UIViewController {
                 UIFont.systemFont(ofSize: 20)]
     }
     
+    //MARK:- delete and load
 	func deleteNote(note:Note)  {
         do {
             context.delete(note)
@@ -108,22 +109,23 @@ class NotesController: UIViewController {
         tableNoteViews.setEditing(editMode, animated: true)
     }
     
-    //MARK:- UIButtons
+    //MARK:- Edit button
     @IBAction func editFunction(_ sender: UIBarButtonItem) {
         
         editMode = !editMode
         enableSelection(editMode: editMode)
     }
     
+    //MARK:- sort button
     @IBAction func optionButtonFunction(_ sender: Any) {
         
 		let alert = UIAlertController(title: "Do you want to sort notes?", message: "If yes, then Select any option to sort it.", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "(A-Z) Ascending", style: .default, handler: {
+        alert.addAction(UIAlertAction(title: "Title Ascending", style: .default, handler: {
             _ in
             self.loadNotes(predicate: nil, search: [NSSortDescriptor(key: "title", ascending: true)])
             self.tableNoteViews.reloadData()
         }))
-        alert.addAction(UIAlertAction(title: "(A-Z) Descending", style: .default, handler: {
+        alert.addAction(UIAlertAction(title: "Title Descending", style: .default, handler: {
             _ in
             self.loadNotes(predicate: nil, search: [NSSortDescriptor(key: "title", ascending: false)])
             self.tableNoteViews.reloadData()
@@ -143,6 +145,7 @@ class NotesController: UIViewController {
 		
     }
     
+    //MARK:- Move button
     @IBAction func moveFunction(_ sender: Any) {
         
         if let indexPaths = self.tableNoteViews.indexPathsForSelectedRows{
@@ -154,6 +157,7 @@ class NotesController: UIViewController {
         }
     }
     
+    //MARK:- create note
     @IBAction func createNoteFunction(_ sender: Any) {
         
         let destination = self.storyboard?.instantiateViewController(identifier: "create_note_view") as! CreateNoteController
@@ -162,6 +166,7 @@ class NotesController: UIViewController {
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
+    //MARK:- Delete button for multiple delete
     @IBAction func deleteFunction(_ sender: Any) {
 		if let indexPaths = self.tableNoteViews.indexPathsForSelectedRows {
             let alert = UIAlertController(title: "Delete notes", message: "Are you sure?", preferredStyle: .actionSheet)
@@ -181,6 +186,7 @@ class NotesController: UIViewController {
     }
 }
 
+//MARK:- Table functions
 extension NotesController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
