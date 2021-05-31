@@ -67,7 +67,14 @@ class NotesController: UIViewController {
                 UIFont.systemFont(ofSize: 20)]
     }
     
-    
+	func deleteNote(note:Note)  {
+        do {
+            context.delete(note)
+            try context.save()
+        } catch  {
+            print(error)
+        }
+    }   
     
     func loadNotes(predicate : NSPredicate? = nil,search: [NSSortDescriptor]?=nil)  {
         
@@ -187,6 +194,20 @@ extension NotesController: UITableViewDataSource,UITableViewDelegate{
         destinationView.delegate = self
         destinationView.note = notes[indexPath.row]
         self.navigationController?.pushViewController(destinationView, animated: true)
+    }
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "Delete", message: "Are you sure to delete note ?", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {
+                _ in
+                self.deleteNote(note: self.notes[indexPath.row])
+                self.loadNotes()
+                self.tableNoteViews.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
